@@ -1,0 +1,110 @@
+body {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: white;
+    background-color: lightyellow;
+    background-image: url("../cat.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    font-size: 28px;
+    color: blue;
+}
+
+h2 {
+    font-size: 20px;
+    color: yellow;
+    text-shadow: 2px 2px 2px black;
+}
+
+p {
+    font-size: 16px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+p,
+li,
+a {
+    background: linear-gradient(90deg,
+            red,
+            orange,
+            yellow,
+            lime,
+            cyan,
+            blue,
+            violet,
+            red);
+
+    background-size: 300% 100%;
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+
+    animation: rainbowMove 2s linear infinite;
+}
+
+@keyframes rainbowMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes space_cat_spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#popcat {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+
+}
+
+#name {
+    position: fixed;
+    top: 45px;
+    left: calc(50% - 220px);
+    z-index: 1000;
+}
+
+#message {
+    position: fixed;
+    top: 45px;
+    left: calc(50% - 60px);
+    z-index: 1000;
+}
+
+#guestbook_button {
+    position: fixed;
+    top: 45px;
+    left: calc(50% + 120px);
+    z-index: 1000;
+}
+
+#guestbook_list li {
+    pointer-events: none;
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>개인 프로필</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <h1>개인 프로필</h1>
+
+  <button type="button" onclick="cat()">
+    프로필 사진
+  </button>
+
+  <div id="crazy-cat" style="display: none;">
+    <img src="/crazy.gif" alt="프로필 사진" width="500">
+  </div>
+
+<h2 style="position: fixed; top: 5px; left: 50%; transform: translateX(-50%); margin: 0; z-index: 1000;">
+  방명록
+</h2>
+
+<input type="text" id="name" placeholder="이름">
+<input type="text" id="message" placeholder="남길 메시지">
+<button type="button" id="guestbook_button">남기기</button>
+
+<ul id="guestbook_list"></ul>
+
+  <hr>
+
+  <div style="position: fixed; top: 20px; right: 20px; text-align: center;">
+    <img id="space_cat" src="/space_cat.png" width="300">
+
+    <br>
+
+    <button type="button"
+      onclick="document.getElementById('space_cat').style.animation='space_cat_spin 0.6s linear infinite'">
+      회전
+    </button>
+  </div>
+
+  <div style="position: fixed; right: 20px; bottom: 20px; text-align: center;">
+
+    <button type="button" style="padding: 8px 16px; border-radius: 8px; border: 1px solid black; background: pink;"
+      onclick="
+        const cat = document.getElementById('popcat');
+        cat.src = '/popcat_2.png';
+
+        setTimeout(() => {
+            cat.src = '/popcat_1.png';
+        }, 250);
+    ">
+      POP
+    </button>
+
+    <br>
+
+    <img id="popcat" src="/popcat_1.png" alt="고양이">
+
+  </div>
+
+  <h2>기본 정보</h2>
+  <p>이름: <%= name %>
+  </p>
+  <p>학번: <%= studentId %>
+  </p>
+  <p>학과: 정보통신공학과</p>
+
+  <hr>
+
+  <h2>취미</h2>
+  <ul>
+    <li>음악감상</li>
+    <li>게임</li>
+  </ul>
+
+  <hr>
+
+  <h2>연락처</h2>
+  <p>이메일: <%= email %>
+  </p>
+  <p>GitHub: <a href="<%= github %>">
+      <%= github %>
+    </a></p>
+
+  <script>
+    function cat() {
+      const crazycat = document.getElementById('crazy-cat');
+
+      if (crazycat.style.display === 'none') {
+        crazycat.style.display = 'block';
+      } else {
+        crazycat.style.display = 'none';
+      }
+    }
+
+document.querySelector("#guestbook_button").addEventListener("click", function () {
+  const name = document.querySelector("#name").value.trim();
+  const message = document.querySelector("#message").value.trim();
+
+  if (name === "" || message === "") {
+    alert("이름과 메시지를 모두 입력해 주세요.");
+    return;
+  }
+
+  const li = document.createElement("li");
+  li.textContent = name + " : " + message;
+
+  li.style.position = "fixed";
+  li.style.left = Math.random() * 80 + "vw";
+  li.style.top = 20 + Math.random() * 70 + "vh";
+
+  document.querySelector("#guestbook_list").appendChild(li);
+});
+  </script>
+
+<hr>
+
+
+</body>
+
+</html>
